@@ -1,0 +1,43 @@
+[
+	{
+			"title": "Clarissa Explains It All",
+			"image": "https://m.media-amazon.com/images/M/MV5BY2Q2ODljZjQtMTU2Yi00N2I0LWI4M2EtNjNjOTkwM2MxMjAyXkEyXkFqcGdeQXVyODY0NzcxNw@@._V1_.jpg",
+			"year": 1991,
+			"number_of_seasons": 5,
+			"worth_a_watch": true,
+			"description": "great show"
+	},
+	{
+			"title": "Sabrina the teenage witch",
+			"image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD",
+			"year": 1996,
+			"number_of_seasons": 7,
+			"worth_a_watch": true,
+			"description": "great show"
+	},
+	{
+			"title": "The Fresh Prince of Bel-Air",
+			"image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:AN",
+			"year": 1990,
+			"number_of_seasons": 6,
+			"worth_a_watch": true,
+			"description": "great show"
+	},
+	{
+			"title": "Buffy the vampire slayer",
+			"image": "buffy image",
+			"year": 1997,
+			"number_of_seasons": 7,
+			"worth_a_watch": true,
+			"description": "great show"
+	},
+	{
+			"title": "Charmed",
+			"image": "https://m.media-amazon.com/images/M/MV5BNTIxNmUxMWQtNjc0Yy00NjM2LWFjMTMtNjA2MmEzOTFiMWRmXkEyXkFqcGdeQXVyNzA5NjUyNjM@._V1_.jpg",
+			"year": 1998,
+			"number_of_seasons": 8,
+			"worth_a_watch": true,
+			"description": "controversial, maybe good maybe shit"
+	}
+	]
+	
