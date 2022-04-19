@@ -1,5 +1,7 @@
 from django.db import models
 
+from actors.models import Actor
+
 
 class Show(models.Model):
     """
@@ -13,6 +15,8 @@ class Show(models.Model):
     year = models.PositiveIntegerField(default=None)
     number_of_seasons = models.PositiveIntegerField(default=None)
     worth_a_watch = models.BooleanField(default=True, null=True)
+
+    star = models.ForeignKey(Actor, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         """Formats entries in the Admin panel"""
