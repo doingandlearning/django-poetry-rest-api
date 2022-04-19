@@ -7,7 +7,7 @@ class Show(models.Model):
     """
     title = models.CharField(
         max_length=50, default=None)  # fields are required by default so no need to specify
-    image = models.CharField(max_length=50, default=None)
+    image = models.CharField(max_length=250, default=None)
 
     # must be positive number, integerfield can be negative
     year = models.PositiveIntegerField(default=None)
