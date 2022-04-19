@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-%m&na94^*w=&tye5#ueafgt9fe&w@j&c)unn1lg!5_(kz_f2_p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',  # Our react app gets hosted on port `3000`
