@@ -1,4 +1,3 @@
-from tkinter.filedialog import askdirectory
 from rest_framework import serializers
 
 from creators.models import Creator
