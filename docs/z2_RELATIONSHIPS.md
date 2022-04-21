@@ -191,3 +191,70 @@ What about reading data in the opposite direction? For example, which shows did 
 ```
 
 2. Then you have all the options as above for adapting the serializer.
+
+## Creating records
+
+If we use a nested serializer when _creating_ or _updating_ a record it will expect to receive data in the format that it outputs the data. So if we used a populated serializer when creating a record, it would expect to receive nested data.
+
+This may be desirable, however, you would also need to write logic to describe _how_ the serializer should deal with that data.
+
+Here's an example with the `PopulatedTrackSerializer` above:
+
+```py
+class PopulatedTrackSerializer(TrackSerializer):
+
+    artist = ArtistSerializer()
+    genres = GenreSerializer(many=True)
+
+
+    def create(self, data):
+        artist_data = data.pop('artist')
+        genres_data = data.pop('genres')
+
+        # create an artist without artist or genre data
+        track = Track(**data)
+        # find the existing artist or create one if not found and add to the newly created track
+        track.artist = Artists.get_or_create(**artist_data)
+        # find the existing genres or create them if not found
+        genres = [Genre.get_or_create(**genre_data) for genre_data in genres_data]
+        track.set(genres) # set the genres to the track
+
+        return track # return the completed track
+
+
+    def update(self, track, data):
+        artist_data = data.pop('artist')
+        genres_data = data.pop('genres')
+
+        track.name = data.get('name', track.name)
+        track.released = data.get('released', track.released)
+        track.length = data.get('length', track.length)
+
+        if artist_data:
+            track.artist = Artists.get_or_create(**artist_data)
+
+        if genres_data:
+            genres = [Genre.get_or_create(**genre_data) for genre_data in genres_data]
+            track.set(genres)
+
+        return track
+
+```
+
+This means that data can be sent from the client to the server in the same format that it is sent from server to client.
+
+We would now need to update the view to use this template for creating and updating:
+
+```py
+class TrackList(APIView):
+
+    def post(self, request):
+        serializer = PopulatedTrackSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save() # this will call the `create` method
+
+            return Response(serializer.data, status=201)
+
+        return Response(serializer.data, status=422)
+```
