@@ -1,6 +1,7 @@
 from django.db import models
 
 from actors.models import Actor
+from creators.models import Creator
 
 
 class Show(models.Model):
@@ -16,9 +17,14 @@ class Show(models.Model):
     number_of_seasons = models.PositiveIntegerField(default=None)
     worth_a_watch = models.BooleanField(default=True, null=True)
 
-    star = models.ForeignKey(Actor, on_delete=models.CASCADE, null=True)
+    star = models.ForeignKey(
+        Actor, on_delete=models.SET_NULL, null=True, related_name="starred")
 
-    # creator =
+    creator = models.ForeignKey(
+        Creator, null=True, blank=True, on_delete=models.SET_NULL, related_name="creations")
+
+    supporting_actors = models.ManyToManyField(
+        Actor, blank=True, related_name="supported")
 
     def __str__(self):
         """Formats entries in the Admin panel"""
