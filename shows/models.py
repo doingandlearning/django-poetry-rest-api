@@ -18,6 +18,8 @@ class Show(models.Model):
 
     star = models.ForeignKey(Actor, on_delete=models.CASCADE, null=True)
 
+    # creator =
+
     def __str__(self):
         """Formats entries in the Admin panel"""
         return f"{self.title} - {self.year}"

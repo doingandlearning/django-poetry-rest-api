@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # 1st Party
     'shows',
     'actors',
+    'creators',
 ]
 
 MIDDLEWARE = [
